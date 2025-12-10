@@ -1,0 +1,34 @@
+module background(
+	input video_on,
+	input [9:0] y_coord,
+	input [9:0] x_coord,
+	output reg [7:0] red,
+	output reg [7:0] green,
+	output reg [7:0] blue,
+);
+
+always @(*)
+begin
+	if (video_on == 1'b0) begin
+		red = 8'h00;
+		green = 8'h00;
+		blue = 8'h00;
+	end
+	else
+	begin
+		if (x > 2 and x =< 77 and x > 82 and x =< 157 and x > 162 and x <= 237 and x < 242 and x <= 317 and x > 322 and x <= 397 and x > 402 and x <= 477 and x > 482 and x <= 557 and x > 562 and x <= 637)
+			begin
+				red = 8'hFF;
+				green = 8'hB3;
+				blue = 8'h00;
+			end
+		else
+			begin
+				red = 8'hCC;
+				green = 8'hCC;
+				blue = 8'hCC;
+		end
+	end
+
+
+endmodule
