@@ -1,0 +1,23 @@
+module button(
+	input clk,
+	input rst,
+	input btn_raw,
+	output reg btn_down,
+	output reg btn_rise
+	);
+	
+	reg prev;
+	
+	always @(posedge clk or negedge rst)
+	begin
+		if (rst == 1'b0) begin
+			btn_down <= 0;
+			btn_rise <= 0;
+			prev <= 0;
+		end else begin
+			btn_down <= ~btn_raw;
+			btn_rise <= ~btn_raw & prev;
+			prev <= ~btn_raw;
+		end
+	end
+endmodule
